@@ -9,4 +9,6 @@ const userSchema = new mongoose.Schema({
     major : String,
     experiences: {ref: "Experience", type: mongoose.Schema.Types.ObjectId},
     profileImage: String,
-})
+});
+
+export default userSchema;
