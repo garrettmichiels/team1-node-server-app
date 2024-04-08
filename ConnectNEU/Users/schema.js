@@ -7,8 +7,10 @@ const userSchema = new mongoose.Schema({
     role: String,
     industry: String, //(Only for Mentors)
     major : String,
-    experiences: {ref: "Experience", type: mongoose.Schema.Types.ObjectId},
+    // experiences: {type: mongoose.Schema.Types.ObjectId,ref: "Experience"},
     profileImage: String,
-});
+},
+    {collection: 'users'},
+);
 
 export default userSchema;

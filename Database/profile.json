@@ -1,0 +1,35 @@
+
+{
+    "_id": "01",
+    "firstName": "Katherine",
+    "lastName" : "Aristizabal",
+    "email": "aristizabalnorena.k@husky.neu.edu",
+    "number": "123-345-2345",
+    "major": "Computer Science",
+    "industry": "Technology",
+    "dob" : "08-05-2003",
+    "role" : "Mentee",
+    "coops": [
+      {
+        "_id": "G001",
+        "name": "Google",
+        "position": "Software Engineer",
+        "rating": "3"
+      }
+    ],
+    "following": [
+      {
+        "_id": "02"
+      },
+      {
+        "_id": "03"
+      },
+      {
+        "_id": "04"
+      },
+      {
+        "_id": "05"
+      }
+    ]
+  }
+
