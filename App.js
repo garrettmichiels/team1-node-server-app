@@ -17,5 +17,5 @@ app.use(
     })
 ); //parses cookies from the header
 UsersRoutes(app);
-SessionRoutes
+SessionRoutes(app);
 app.listen(4000);
