@@ -6,7 +6,8 @@ const companySchema = mongoose.Schema(
     companyName: String, 
     companyId: String, 
     reviews: [{ref: "Reviews", type: mongoose.Schema.Types.ObjectId}]
-  }
+  }, 
+  { collection: "companies" }
 );
 
 export default companySchema;
