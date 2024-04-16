@@ -9,10 +9,10 @@ const userSchema = new mongoose.Schema({
     dob: Date,
     role: {type: String, default: "MENTEE", enum: ["MENTEE", "MENTOR"]},
     id: {type: String, unique: true, required:true},
-
   //  industry: String, //(Only for Mentors)
-  //  major : String,
-    // experiences: {type: mongoose.Schema.Types.ObjectId,ref: "Experience"},
+    major : String,
+     coops: [String],
+     following: [String],
  //   profileImage: String,
 },
     {collection: 'users'},
