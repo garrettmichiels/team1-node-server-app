@@ -11,7 +11,10 @@ export default function UsersRoutes(app) {
 
   const findUserById = async (req, res) => {
     const id = req.params.id;
+    console.log("before u", id)
+
     const user = await dao.findUserById(id);
+    console.log("found u", user)
     res.json(user);
 
   };
@@ -80,6 +83,11 @@ export default function UsersRoutes(app) {
     res.json(status);
   };
 
+  const deleteFollower = async (req, res) => {
+    const status = await dao.deleteFollower(req.params.userId, req.params.followerId);
+    res.json(status);
+};
+
   app.post("/api/users/profile", profile);
   app.post("/api/users/register", signup);
   app.post("/api/users/login", login);
@@ -90,6 +98,8 @@ export default function UsersRoutes(app) {
   app.get("/api/users", findUsers);
   app.get("/api/users/:id", findUserById);
   app.get("/api/users/:username", findUserByUsername);
+  app.get("/api/users/:userId/followers/:followerId", deleteFollower);
+
 }
 
 //   app.post("/api/users/login", async (req, res) => {
