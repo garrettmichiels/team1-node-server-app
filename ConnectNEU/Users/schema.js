@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     companies:[
       companySchema
     ],
-     following: [reviewSchema],
+     following: [{type: mongoose.Schema.Types.ObjectId, ref: 'users'}]
  //   profileImage: String,
 },
     {collection: 'users'},
