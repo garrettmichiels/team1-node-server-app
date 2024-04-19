@@ -88,6 +88,18 @@ export default function UsersRoutes(app) {
     res.json(status);
 };
 
+    const addUserReview = async (req, res) => { 
+        const {userId} = req.params
+        const status = await dao.addReview(userId, req.body)
+        const user = await dao.findUserById(userId)
+        res.json(user)
+    }
+    const deleteUserReview = async (req, res) => { 
+        const {userId, reviewId} = req.params
+        const status = await dao.deleteReview(userId, reviewId)
+        res.json(status)
+    }
+
   app.post("/api/users/profile", profile);
   app.post("/api/users/register", signup);
   app.post("/api/users/login", login);
@@ -99,6 +111,9 @@ export default function UsersRoutes(app) {
   app.get("/api/users/:id", findUserById);
   app.get("/api/users/:username", findUserByUsername);
   app.get("/api/users/:userId/followers/:followerId", deleteFollower);
+
+  app.put("/api/users/:userId/reviews", addUserReview)
+  app.delete("/api/users/:userId/reviews", deleteUserReview)
 
 }
 

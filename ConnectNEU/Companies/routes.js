@@ -22,7 +22,7 @@ export default function CompanyRoutes(app) {
     }
     const deleteCompanyReview = async (req, res) => { 
         const {companyId, reviewId} = req.params
-        const status = await dao.deleteCompanyReview(companyId, reviewId)
+        const status = await dao.deleteReview(companyId, reviewId)
         res.json(status)
     }
 
