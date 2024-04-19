@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from "cors";
 import UsersRoutes from './ConnectNEU/Users/routes.js';
+import ReviewRoutes from './ConnectNEU/Reviews/routes.js';
 import mongoose from "mongoose";
 import session from "express-session"
 import SessionRoutes from './SessionRoutes.js';
@@ -20,5 +21,6 @@ app.use(
     })
 ); //parses cookies from the header
 UsersRoutes(app);
+ReviewRoutes(app);
 SessionRoutes(app);
 app.listen(4000);
