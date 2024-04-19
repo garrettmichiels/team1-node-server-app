@@ -23,7 +23,6 @@ export default function UsersRoutes(app) {
   };
 
   const profile = async (req, res) => {
-    // console.log("[6] profile");
     console.log("req.session user ", req.session.currentUser);
     if (!req.session.currentUser) {
       console.log("Not logged in");
@@ -61,9 +60,9 @@ export default function UsersRoutes(app) {
 
   const login =  async (req, res) => {
     const { username, password } = req.body;
-    console.log(username,password);
+    // console.log(username,password);
     const ewq = await dao.findUserByCredentials(username, password);
-    console.log("login node" , ewq);
+    // console.log("login node" , ewq);
 
     if (ewq) {
       // console.log("in session with current user");
@@ -77,7 +76,7 @@ export default function UsersRoutes(app) {
   const updateUser = async (req, res) => {
     const { userId } = req.params;
     const status = await dao.updateUser(userId, req.body);
-    currentUser = await dao.findUserById(userId);
+    const currentUser = await dao.findUserById(userId);
     res.json(status);
   };
 
