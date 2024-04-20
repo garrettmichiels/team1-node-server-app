@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     major : String,
      companies: [{ref: 'companies',type: mongoose.Schema.Types.ObjectId}],
       following: [{ref: 'users', type: mongoose.Schema.Types.ObjectId}],
-      reviews: [{ref: 'users', type: mongoose.Schema.Types.ObjectId}]
+      reviews: [{ref: 'reviews', type: mongoose.Schema.Types.ObjectId}]
 },
     {collection: 'users'},
 );
