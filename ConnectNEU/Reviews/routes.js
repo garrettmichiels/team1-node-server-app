@@ -27,13 +27,14 @@ export default function ReviewRoutes(app) {
 
     const findUserReviews = async (req, res) => {
         const { userId } = req.params;
-        const user = await usersDao.findById(userId)
+        const user = await usersDao.findUserById(userId)
         res.json(user.reviews)
     }
 
     const findCompanyReviews = async (req, res) => {
         const { companyId } = req.params;
-        const company = await companyDao.findById(companyId)
+        const company = await companyDao.findCompanyById(companyId)
+        console.log("company is", company)
         res.json(company.reviews)
     }
 
