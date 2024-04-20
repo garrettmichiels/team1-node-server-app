@@ -41,13 +41,15 @@ export default function UsersRoutes(app) {
   };
 
   const signup = async (req, res) => {
-    const user = await dao.findUserByUsername(req.body.username);
-    if (user) {
+    console.log(req.body.user)
+    const user = req.body;
+    const existingUser = await dao.findUserByUsername(user.username);
+    if (existingUser) {
       res.status(400).json(
         { message: "Username already taken" });
     }
-    user = await dao.findUserByEmail(req.body.email);
-    if (user) {
+    existingUser = await dao.findUserByEmail(user.email);
+    if (existingUser) {
       res.status(400).json(
         { message: "Email already taken" });
     }
