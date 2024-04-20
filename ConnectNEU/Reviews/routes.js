@@ -44,8 +44,8 @@ export default function ReviewRoutes(app) {
     
     app.put("/api/reviews/:reviewId", updateReview)
     app.delete("/api/reviews/:reviewId", deleteReview)
-    app.post("/api/reviews/:userId/:companyId/reviews", createReview)
-    app.get("/api/reviews/:userId/userReviews", findUserReviews)
-    app.get("/api/reviews/:companyId/companyReviews", findCompanyReviews)
+    app.post("/api/reviews/:userId/:companyId", createReview)
+    app.get("/api/reviews/userReviews/:userId", findUserReviews)
+    app.get("/api/reviews/companyReviews/:companyId", findCompanyReviews)
     app.get("/api/reviews", findRecentReviews)
 }
