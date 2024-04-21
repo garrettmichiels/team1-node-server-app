@@ -2,7 +2,7 @@ import companyModel from "./model.js";
 
 export const findAllCompanies = () => companyModel.find();
 
-export const findCompanyById = async (id) => await companyModel.findOne({_id: id}).populate("reviews")
+export const findCompanyById = async (id) => await companyModel.findOne({_id: id})
 
 export const createCompany = async (company) => await companyModel.create(company)
 

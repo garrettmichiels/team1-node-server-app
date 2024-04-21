@@ -6,8 +6,8 @@ export default function ReviewRoutes(app) {
     const createReview = async (req, res) => {
         const { userId, companyId } = req.params;
         const review = await dao.addReview(req.body);
-        const user = await usersDao.addReview(userId, req.body.id)
-        const company = await companyDao.addReview(companyId, req.body.id)
+        const user = await usersDao.addReview(userId, review._id)
+        const company = await companyDao.addReview(companyId, review._id)
         res.json(review);
     }
 
@@ -42,8 +42,15 @@ export default function ReviewRoutes(app) {
         const reviews = await dao.findAllReviews()
         res.json(reviews)
     }
+
+    const findReviewById = async (req, res) => {
+        const {reviewId} = req.params
+        const review = await dao.findReviewById(reviewId)
+        res.json(review)
+    }
     
     app.put("/api/reviews/:reviewId", updateReview)
+    app.get("/api/reviews/:reviewId", findReviewById)
     app.delete("/api/reviews/:reviewId", deleteReview)
     app.post("/api/reviews/:userId/:companyId", createReview)
     app.get("/api/reviews/userReviews/:userId", findUserReviews)
