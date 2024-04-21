@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     email: String,
     dob: Date,
     role: {type: String, default: "MENTEE", enum: ["MENTEE", "MENTOR"]},
-    id: {type: String, unique: true, required:true},
+    // id: {type: String, unique: true, required:true},
   //  industry: String, //(Only for Mentors)
     major : String,
      companies: [{ref: 'companies',type: mongoose.Schema.Types.ObjectId}],
