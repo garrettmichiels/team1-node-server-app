@@ -3,6 +3,7 @@ import userModel from "./model.js";
 // CRUD
 export const findAllUsers = () => userModel.find();
 export const findUserById = (id) => userModel.findOne({id}).populate("companies").populate("following");
+export const findUserBy_Id = (id) => userModel.findById({_id: id});
 export const findUserByEmail = (email) => userModel.findOne({ email });
 export const findUserByUsername = (username) => userModel.findOne({ username });
 export const findUserByCredentials = (username, password) =>
