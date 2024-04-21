@@ -41,25 +41,26 @@ export default function UsersRoutes(app) {
   };
 
   const signup = async (req, res) => {
-    console.log(req.body.user)
+    console.log("user to register", req.body)
     const user = req.body;
     const existingUser = await dao.findUserByUsername(user.username);
     if (existingUser) {
       res.status(400).json(
         { message: "Username already taken" });
     }
-    existingUser = await dao.findUserByEmail(user.email);
-    if (existingUser) {
+    const existingUserCheck2 = await dao.findUserByEmail(user.email);
+    if (existingUserCheck2) {
       res.status(400).json(
         { message: "Email already taken" });
     }
 
     try{
-        const newUser = await dao.createUser(req.body);
+        const newUser = await dao.createUser(user);
         req.session["currentUser"] = currentUser;
         res.send(newUser);
     } catch (e) {
       console.log("Error Creating User");
+      console.log(e.message);
     }
   };
 
@@ -107,7 +108,6 @@ export default function UsersRoutes(app) {
   app.post("/api/users/login", login);
 
   app.put("/api/users/:id", updateUser);
-
 
   app.get("/api/users", findUsers);
   app.get("/api/users/:id", findUserById);
