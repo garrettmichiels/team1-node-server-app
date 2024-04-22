@@ -18,8 +18,10 @@ export const deleteFollower = (userId, followerId) => {
   userModel.updateOne({ _id: userId }, { $pull: { followers: followerId } })};
 export const addFollower = (userId, followerId) => {
     userModel.updateOne({ _id: userId }, { $push: { followers: followerId } })};
-  export const deleteCompany = (userId, companyId) => {
+export const deleteCompany = (userId, companyId) => {
     userModel.updateOne({ _id: userId }, { $pull: { companies: companyId } })};
-    export const addCompany = async (userId, companyId) => await userModel.updateOne({ _id: userId }, { $push: {companies: companyId}})
+export const addCompany = async (userId, companyId) => await userModel.updateOne({ _id: userId }, { $push: {companies: companyId}})
+export const addJobToUser = (userId, job) => {
+  userModel.updateOne({ _id: userId }, { $push: { job: job } })}
 
     

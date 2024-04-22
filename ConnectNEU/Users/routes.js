@@ -88,6 +88,11 @@ const addFollower = async (req, res) => {
   res.json(status);
 };
 
+const addJobToUser = async (req, res) => {
+  const status = await dao.addJobToUser(req.params.userId, req.params.job);
+  res.json(status);
+}
+
 const deleteCompany = async (req, res) => {
   const status = await dao.deleteFollower(req.params.userId, req.params.companyId);
   res.json(status);
@@ -115,6 +120,7 @@ const addCompany = async (req, res) => {
   app.delete("/api/users/:userId/companies/:companyId", deleteCompany);
   app.put("/api/users/:userId/companies/:companyId", addCompany);
   app.put("/api/users/:userId/followers/:followerId", addFollower);
+  app.put("/api/users/:userId/jobs/:jobId", addJobToUser);
 
 
 }
