@@ -97,6 +97,7 @@ const deleteCompany = async (req, res) => {
   app.post("/api/users/profile", profile);
   app.post("/api/users/register", signup);
   app.post("/api/users/login", login);
+  app.post("/api/users/logout", signout);
 
   app.put("/api/users/:id", updateUser);
 
