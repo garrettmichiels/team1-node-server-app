@@ -8,4 +8,4 @@ export const createCompany = async (company) => await companyModel.create(compan
 
 export const addReview = async (companyId, reviewId) => await companyModel.updateOne({ _id: companyId }, { $push: {reviews: reviewId}})
 
-export const deleteReview = async (companyId, reviewId) => await companyModel.updateOne({ _id: companyId }, { $pop: {reviews: reviewId}})
+export const deleteReview = async (companyId, reviewId) => await companyModel.updateOne({ _id: companyId }, { $pull: {reviews: reviewId}})
