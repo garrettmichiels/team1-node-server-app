@@ -5,9 +5,9 @@ export default function CompanyRoutes(app) {
         const company = await dao.createCompany(req.body)
         res.json(company)
     }
-    const findCompanyById = async (req, res) => { 
+    const findCompanyBy_Id = async (req, res) => { 
         const {companyId} = req.params
-        const company = await dao.findCompanyById(companyId)
+        const company = await dao.findCompanyBy_Id(companyId)
         res.json(company)
     }
     const findAllCompanies = async (req, res) => { 
@@ -17,7 +17,7 @@ export default function CompanyRoutes(app) {
     const addCompanyReview = async (req, res) => { 
         const {companyId} = req.params
         const status = await dao.addReview(companyId, req.body)
-        const company = await dao.findCompanyById(companyId)
+        const company = await dao.findCompanyBy_Id(companyId)
         res.json(company)
     }
     const deleteCompanyReview = async (req, res) => { 
@@ -26,9 +26,16 @@ export default function CompanyRoutes(app) {
         res.json(status)
     }
 
+    const findCompanyByMuseId = async (req, res) => {
+        const {companyId} = req.params
+        const company = await dao.findCompanyByMuseId(companyId)
+        res.json(company)
+    }
+
     app.put("/api/companies/:companyId", addCompanyReview)
     app.delete("/api/companies/:companyId/:reviewId", deleteCompanyReview)
     app.post("/api/companies/", createCompany)
-    app.get("/api/companies/:companyId", findCompanyById)
+    app.get("/api/companies/:companyId", findCompanyBy_Id)
+    app.get("/api/companies/muse/:companyId", findCompanyByMuseId)
     app.get("/api/companies", findAllCompanies)
 }
