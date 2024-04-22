@@ -13,7 +13,7 @@ export const updateUser = (id, user) =>
   userModel.updateOne({ _id: id }, { $set: user });
 export const deleteUser = (id) => userModel.deleteOne({ _id: id });
 export const addReview = async (userId, reviewId) => await userModel.updateOne({ _id: userId }, { $push: {reviews: reviewId}})
-export const deleteReview = async (userId, reviewId) => await userModel.updateOne({ _id: userId }, { $pop: {reviews: reviewId}})
+export const deleteReview = async (userId, reviewId) => await userModel.updateOne({ _id: userId }, { $pull: {reviews: reviewId}})
 export const deleteFollower = (userId, followerId) => {
   userModel.updateOne({ _id: userId }, { $pull: { followers: followerId } })};
 export const addFollower = (userId, followerId) => {
