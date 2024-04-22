@@ -93,6 +93,12 @@ const deleteCompany = async (req, res) => {
   res.json(status);
 };
 
+const addCompany = async (req, res) => {
+  console.log(req.params.userId);
+  const status = await dao.addCompany(req.params.userId, req.params.companyId);
+  res.json(status);
+};
+
 
   app.post("/api/users/profile", profile);
   app.post("/api/users/register", signup);
@@ -107,7 +113,8 @@ const deleteCompany = async (req, res) => {
   app.get("/api/users/:username", findUserByUsername);
   app.delete("/api/users/:userId/followers/:followerId", deleteFollower);
   app.delete("/api/users/:userId/companies/:companyId", deleteCompany);
-  app.put("/api/users/:userId/followers/:followerId", deleteFollower);
+  app.put("/api/users/:userId/companies/:companyId", addCompany);
+  app.put("/api/users/:userId/followers/:followerId", addFollower);
 
 
 }
