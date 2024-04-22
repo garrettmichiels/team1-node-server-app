@@ -2,12 +2,12 @@ import userModel from "./model.js";
 
 // CRUD
 export const findAllUsers = () => userModel.find();
-export const findUserById = (id) => userModel.findOne({id}).populate("companies").populate("following");
+export const findUserById = (id) => userModel.findOne({id}).populate("following").populate("reviews").populate("companies");
 export const findUserBy_Id = (id) => userModel.findById({_id: id});
 export const findUserByEmail = (email) => userModel.findOne({ email });
 export const findUserByUsername = (username) => userModel.findOne({ username });
 export const findUserByCredentials = (username, password) =>
-  userModel.findOne({ username, password }).populate("companies");
+  userModel.findOne({ username, password }).populate("following").populate("reviews").populate("companies");
 export const createUser = (user) => userModel.create(user);
 export const updateUser = (id, user) =>
   userModel.updateOne({ _id: id }, { $set: user });
