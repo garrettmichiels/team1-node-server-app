@@ -11,10 +11,7 @@ export default function UsersRoutes(app) {
 
   const findUserById = async (req, res) => {
     const id = req.params.id;
-    console.log("before u", id)
-
     const user = await dao.findUserById(id);
-    console.log("found u", user)
     res.json(user);
 
   };
@@ -26,9 +23,7 @@ export default function UsersRoutes(app) {
   };
 
   const profile = async (req, res) => {
-    console.log("req.session user ", req.session.currentUser);
     if (!req.session.currentUser) {
-      console.log("Not logged in");
       res.status(401).send("Not logged in");
       return;
     }
@@ -63,12 +58,9 @@ export default function UsersRoutes(app) {
 
   const login =  async (req, res) => {
     const { username, password } = req.body;
-    // console.log(username,password);
     const ewq = await dao.findUserByCredentials(username, password);
-    // console.log("login node" , ewq);
 
     if (ewq) {
-      // console.log("in session with current user");
       req.session.currentUser = ewq;
       res.send(ewq);
     } else {
@@ -79,8 +71,9 @@ export default function UsersRoutes(app) {
   const updateUser = async (req, res) => {
     const { userId } = req.params;
     const status = await dao.updateUser(userId, req.body);
+    console.log(req.body)
     const currentUser = await dao.findUserById(userId);
-    res.json(status);
+    res.json(currentUser);
   };
 
   const deleteFollower = async (req, res) => {
@@ -89,8 +82,13 @@ export default function UsersRoutes(app) {
     res.json(status);
 };
 
-const deleteCompany = async (req, res) => {
+const addFollower = async (req, res) => {
   console.log(req.params.userId);
+  const status = await dao.addFollower(req.params.userId, req.params.followerId);
+  res.json(status);
+};
+
+const deleteCompany = async (req, res) => {
   const status = await dao.deleteFollower(req.params.userId, req.params.companyId);
   res.json(status);
 };
@@ -108,6 +106,7 @@ const deleteCompany = async (req, res) => {
   app.get("/api/users/:username", findUserByUsername);
   app.delete("/api/users/:userId/followers/:followerId", deleteFollower);
   app.delete("/api/users/:userId/companies/:companyId", deleteCompany);
+  app.put("/api/users/:userId/followers/:followerId", deleteFollower);
 
 
 }
