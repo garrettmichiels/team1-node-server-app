@@ -48,9 +48,9 @@ export default function UsersRoutes(app) {
     }
 
     try{
-        const newUser = await dao.createUser(req.body);
+        const currentUser = await dao.createUser(user);
         req.session["currentUser"] = currentUser;
-        res.send(newUser);
+        res.send(currentUser);
     } catch (e) {
       console.log("Error Creating User");
     }
