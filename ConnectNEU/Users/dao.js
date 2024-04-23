@@ -3,8 +3,8 @@ import userModel from "./model.js";
 // CRUD
 export const findAllUsers = () => userModel.find();
 export const findUserById = (id) => userModel.findOne({id}).populate("following").populate("reviews").populate("companies");
-export const findUserBy_Id = (id) => userModel.findById({_id: id}).populate("following").populate("reviews").populate("companies");;
-export const findUserByEmail = (email) => userModel.findOne({ email }).populate("following").populate("reviews").populate("companies");;
+export const findUserBy_Id = (id) => userModel.findById({_id: id}).populate("following").populate("reviews").populate("companies");
+export const findUserByEmail = (email) => userModel.findOne({ email }).populate("following").populate("reviews").populate("companies");
 export const findUserByUsername = (username) => userModel.findOne({ username }).populate("following").populate("reviews").populate("companies");;
 export const findUserByCredentials = (username, password) =>
   userModel.findOne({ username, password }).populate("following").populate("reviews").populate("companies");
