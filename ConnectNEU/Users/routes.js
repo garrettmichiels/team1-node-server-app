@@ -74,6 +74,7 @@ export default function UsersRoutes(app) {
     console.log("update status", status)
     console.log("finding user with _id: ", id)
     const updatedUser = await dao.findUserBy_Id(id);
+    req.session["currentUser"] = updatedUser;
     console.log("The current user has been updated to", updatedUser)
     res.json(updatedUser);
   };
