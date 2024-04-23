@@ -4,7 +4,7 @@ export const findAllCompanies = () => companyModel.find();
 
 export const findCompanyBy_Id = async (id) => await companyModel.findById({_id: id})
 
-export const findCompanyByMuseId = async (id) => await companyModel.findOne({id: id})
+export const findCompanyByMuseId = async (id) => await companyModel.findOne({companyId: id})
 
 export const createCompany = async (company) => await companyModel.create(company)
 
