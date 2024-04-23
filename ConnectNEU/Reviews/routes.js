@@ -28,7 +28,6 @@ export default function ReviewRoutes(app) {
     const findUserReviews = async (req, res) => {
         const { userId } = req.params;
         const user = await usersDao.findUserBy_Id(userId)
-        console.log("user found by id is: ", user)
         res.json(user.reviews)
     }
 
