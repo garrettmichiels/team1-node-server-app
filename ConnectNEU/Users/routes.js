@@ -69,11 +69,13 @@ export default function UsersRoutes(app) {
   };
 
   const updateUser = async (req, res) => {
-    const { userId } = req.params;
-    const status = await dao.updateUser(userId, req.body);
-    console.log(req.body)
-    const currentUser = await dao.findUserById(userId);
-    res.json(currentUser);
+    const { id } = req.params;
+    const status = await dao.updateUser(id, req.body);
+    console.log("update status", status)
+    console.log("finding user with _id: ", id)
+    const updatedUser = await dao.findUserBy_Id(id);
+    console.log("The current user has been updated to", updatedUser)
+    res.json(updatedUser);
   };
 
   const deleteFollower = async (req, res) => {
