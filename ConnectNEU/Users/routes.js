@@ -1,4 +1,5 @@
 import * as dao from "./dao.js";
+import * as companyDao from "../Companies/dao.js"
 
 export default function UsersRoutes(app) {
 
@@ -103,8 +104,24 @@ const deleteCompany = async (req, res) => {
 
 const addCompany = async (req, res) => {
   console.log(req.params.userId);
-  const status = await dao.addCompany(req.params.userId, req.params.companyId);
-  res.json(status);
+  console.log(req.params.companyId)
+  console.log(req.body)
+  try {
+    const company = await companyDao.findCompanyByMuseId(req.params.companyId)
+    console.log("company is", company)
+    const status = await dao.addCompany(req.params.userId, company._id);
+    res.json(status);
+  } catch (e) {
+    try{
+      const create_status = await companyDao.createCompany(req.body)
+      const company = await companyDao.findCompanyByMuseId(req.params.companyId)
+      console.log("company is", company)
+      const status = await dao.addCompany(req.params.userId, company._id);
+      res.json(status);
+    } catch (e) {
+      console.log("couldn't create company")
+    }
+  }
 };
 
 
