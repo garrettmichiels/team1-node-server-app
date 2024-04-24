@@ -4,7 +4,7 @@ export default function CompanyRoutes(app) {
     const createCompany = async (req, res) => { 
         const status = await dao.createCompany(req.body)
         console.log("STATUS CREATE COMPANY", status)
-        const company = await dao.findCompanyByMuseId(req.params.museId)
+        const company = await dao.findCompanyByMuseId(req.body.museId)
         console.log("CREATED COMPANY", company)
         res.json(company)
     }
@@ -37,8 +37,8 @@ export default function CompanyRoutes(app) {
 
     app.put("/api/companies/:companyId", addCompanyReview)
     app.delete("/api/companies/:companyId/:reviewId", deleteCompanyReview)
-    app.post("/api/companies/:museId", createCompany)
-    app.get("/api/companies/:companyId", findCompanyBy_Id)
+    app.post("/api/companies", createCompany)
     app.get("/api/companies/muse/:companyId", findCompanyByMuseId)
+    app.get("/api/companies/:companyId", findCompanyBy_Id)
     app.get("/api/companies/", findAllCompanies)
 }
