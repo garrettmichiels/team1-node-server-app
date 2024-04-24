@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
-    dob: Date,
+    dob: {type: Date, default: new Date()},
     role: {type: String, default: "MENTEE", enum: ["MENTEE", "MENTOR"]},
     // id: {type: String, unique: true, required:true},
   //  industry: String, //(Only for Mentors)
