@@ -5,6 +5,7 @@ import ReviewRoutes from './ConnectNEU/Reviews/routes.js';
 import mongoose from "mongoose";
 import session from "express-session"
 import SessionRoutes from './SessionRoutes.js';
+import CompanyRoutes from './ConnectNEU/Companies/routes.js';
 mongoose.connect("mongodb+srv://maggiecolletteneu:8vAdRiKHRbsb4uoM@webdevfinal.0fraa4z.mongodb.net/connectNEU?retryWrites=true&w=majority&appName=WebDevFinal");
 //mongodb+srv://maggiecolletteneu:8vAdRiKHRbsb4uoM@webdevfinal.0fraa4z.mongodb.net/?retryWrites=true&w=majority&appName=WebDevFinal
 const app = express()
@@ -23,4 +24,5 @@ app.use(
 UsersRoutes(app);
 ReviewRoutes(app);
 SessionRoutes(app);
+CompanyRoutes(app);
 app.listen(4000);
