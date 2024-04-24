@@ -4,7 +4,7 @@ export default function CompanyRoutes(app) {
     const createCompany = async (req, res) => { 
         const status = await dao.createCompany(req.body)
         console.log("STATUS CREATE COMPANY", status)
-        const company = await dao.findCompanyByMuseId(req.body.museId)
+        const company = await dao.findCompanyByMuseId(req.body.companyId)
         console.log("CREATED COMPANY", company)
         res.json(company)
     }
